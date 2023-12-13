@@ -6,23 +6,35 @@
 5.Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
 */
 
-const gridContainer = document.querySelector('.grid-container');
-const playBtn = document.querySelector('#play');
-playBtn.addEventListener('click', createGrid);
+const $gridContainer = document.querySelector('.grid-container');
+const $playBtn = document.querySelector('#play');
+
+//ALLA PRESSIONE DEL BOTTONE SI AVVIA LA CREAZIONE DELLA GRIGLIA
+$playBtn.addEventListener('click', play);
+
+//CREAZIONE CON LA FUNZIONE DELLA GRIGLIA
 
 function createGrid() {
     for (let i = 1; i <= 100; i++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        cell.innerHTML = i;
+        const $cell = document.createElement('div');
+        $cell.classList.add('cell');
+        $cell.innerHTML = i;
 
-        cell.addEventListener('click', function () {
+        $cell.addEventListener('click', function () {
             console.log(this);
             this.classList.toggle('active');
 
             console.log(this.innerHTML);
         });
 
-        gridContainer.append(cell);
+        $gridContainer.append($cell);
     }
+}
+//CREAZIONE DEL RESET DEL GIOCO
+function resetGrid() {
+    $gridContainer.innerHTML = '';
+}
+function play() {
+    resetGrid();
+    createGrid();
 }
