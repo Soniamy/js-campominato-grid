@@ -8,14 +8,14 @@
 
 const $gridContainer = document.querySelector('.grid-container');
 const $playBtn = document.querySelector('#play');
-
+const $level = document.querySelector('.form-select');
 //ALLA PRESSIONE DEL BOTTONE SI AVVIA LA CREAZIONE DELLA GRIGLIA
 $playBtn.addEventListener('click', play);
 
 //CREAZIONE CON LA FUNZIONE DELLA GRIGLIA
 
-function createGrid() {
-    for (let i = 1; i <= 100; i++) {
+function createGrid(numerocell) {
+    for (let i = 1; i <= numerocell; i++) {
         const $cell = document.createElement('div');
         $cell.classList.add('cell');
         $cell.innerHTML = i;
@@ -36,5 +36,11 @@ function resetGrid() {
 }
 function play() {
     resetGrid();
-    createGrid();
+    if ($level.value == 0) {
+        createGrid(100);
+    } else if ($level.value == 1) {
+        createGrid(81);
+    } else if ($level.value == 2) {
+        createGrid(49);
+    }
 }
