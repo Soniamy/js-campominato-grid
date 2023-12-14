@@ -14,15 +14,15 @@ $playBtn.addEventListener('click', play);
 
 //CREAZIONE CON LA FUNZIONE DELLA GRIGLIA
 
-function createGrid(numerocell) {
+function createGrid(numerocell, cellClass) {
     for (let i = 1; i <= numerocell; i++) {
         const $cell = document.createElement('div');
-        $cell.classList.add('cell');
+        $cell.classList.add('cell', cellClass);
         $cell.innerHTML = i;
 
         $cell.addEventListener('click', function () {
             console.log(this);
-            this.classList.toggle('active');
+            this.classList.add('active');
 
             console.log(this.innerHTML);
         });
@@ -35,12 +35,13 @@ function resetGrid() {
     $gridContainer.innerHTML = '';
 }
 function play() {
+    //CREAZIONE DELLA GRIGLIA IN BASE ALL'INTERAZIONE DELL'UTENTE
     resetGrid();
     if ($level.value == 0) {
-        createGrid(100);
+        createGrid(100, 'cell100');
     } else if ($level.value == 1) {
-        createGrid(81);
+        createGrid(81, 'cell81');
     } else if ($level.value == 2) {
-        createGrid(49);
+        createGrid(49, 'cell49');
     }
 }

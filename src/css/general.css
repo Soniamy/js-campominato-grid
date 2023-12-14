@@ -51,3 +51,12 @@ html {
     background-color: rgb(210, 128, 240);
     color: black;
 }
+
+.grid-container .cell.cell81 {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+.grid-container .cell.cell49 {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
